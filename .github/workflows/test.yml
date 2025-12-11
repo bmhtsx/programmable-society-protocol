@@ -1,0 +1,43 @@
+name: Hybrid Testing Suite
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  FOUNDRY_PROFILE: default
+
+jobs:
+  test:
+    name: Run All Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node Dependencies
+        run: npm ci
+
+      - name: Run Foundry (Fuzzing)
+        run: forge test -vv
+      
+      - name: Run Hardhat (Unit Tests)
+        run: npx hardhat test
+        env:
+          PRIVATE_KEY: "0x0000000000000000000000000000000000000000000000000000000000000001"
+          ETHERSCAN_API_KEY: "dummy-key-for-ci"
+          CONTRACT_ADDRESS: "0x0000000000000000000000000000000000000000"

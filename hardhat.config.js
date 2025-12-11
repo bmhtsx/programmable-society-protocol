@@ -17,6 +17,8 @@ module.exports = {
     amoy: { // Polygon testnet
       url: "https://rpc-amoy.polygon.technology",
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      gas: 5000000,
+      gasPrice: 50000000000,
     },
     polygon: { // Polygon mainnet
       url: "https://polygon-rpc.com",

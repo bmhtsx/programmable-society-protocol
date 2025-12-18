@@ -17,8 +17,8 @@ describe("Programmable Society Protocol (100% Coverage)", function () {
   const ROLE_TA = 1;
   const ROLE_TEACHER = 2;
 
-  // Error Messages (从合约中提取，用于断言)
-  const ERR_NOT_OWNER = "Ownable: caller is not the owner"; // 或者自定义 error
+  // Error Messages
+  const ERR_NOT_OWNER = "Ownable: caller is not the owner";
   const ERR_NOT_FACULTY = "Caller is not Faculty";
   const ERR_NO_BADGE = "Caller does not hold a badge";
   const ERR_LENGTH_MISMATCH = "Input length mismatch";

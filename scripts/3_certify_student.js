@@ -19,7 +19,7 @@ async function main() {
   const studentTokenId = 3; 
   
   // The final grade/result to record on-chain
-  const grade = "Distinction";
+  const grade = "Good Job!";
 
   // --- 2. EXECUTION ---
 
